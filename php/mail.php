@@ -3,7 +3,7 @@
 	$sub = "Hello World !";
 	$msg = "Hello World\nWhy so serious.\nWhat's up ?\n".time();
 
-	$head = "From: No Reply <noreply@blog.senpaisilver.com>";
+	$head = "From: No Reply <noreply@senpaisilver.com>";
 	//$head = "From: No Reply <noreply@senpaisilver.com>";
 	$head .= "\nReply-To: noreply@senpaisilver.com";
 	$head .= "\nMIME-Version: 1.0";
