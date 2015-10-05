@@ -6,31 +6,27 @@ CC= gcc
 SRCDIR= src
 SRC_ASM= strlen.S
 SRC_C= main.c
-#SRC= main.c strlen.S
 
 OBJDIR= obj
 OBJ_C= $(SRC_C:%.c=obj/%.o)
 OBJ_ASM= $(SRC_ASM:%.S=obj/%.o)
-OBJ= $(patsubst %.c,obj/%.o,$(patsubst %.S,obj/%.o,$(SRC)))
-
 
 LD_FLAGS= 
 CC_FLAGS= -Wall -Wextra
 
-$(OBJDIR)/%.o:$(SRCDIR)/%.S
+all:	$(BINDIR)/$(NAME)
+
+$(OBJ_ASM):$(SRCDIR)/$(SRC_ASM)
 	@mkdir -p $(OBJDIR)
-	$(ASM) -f elf64 -o $@ $<
+	$(ASM) -g -f elf64 -F stabs -o $@ $<
 
-$(OBJDIR)/%.o:$(SRCDIR)/%.c
+$(OBJ_C):$(SRCDIR)/$(SRC_C)
 	@mkdir -p $(OBJDIR)
-	$(CC) $(CC_FLAGS) $(LD_FLAGS) -c $^ -o $@
+	$(CC) $(CC_FLAGS) $(LD_FLAGS) -c $< -o $@
 
-all:	$(NAME)
-
-$(NAME):	$(OBJ_C) $(OBJ_ASM)
+$(NAME):	$(OBJ_ASM) $(OBJ_C) 
 	@mkdir -p $(BINDIR)
 	$(CC) $(OBJ_C) $(OBJ_ASM) -o $(BINDIR)/$(NAME) $(CC_FLAGS) $(LD_FLAGS)
-	#ld $(OBJ_C) $(OBJ_ASM) -o $(BINDIR)/$(NAME)
 
 .PHONY:	clean, fclean, re
 clean:
@@ -38,6 +34,6 @@ clean:
 	rm -rf $(OBJ_ASM)
 
 fclean:	clean
-	rm -rf $(NAME)
+	rm -rf $(BINDIR)/$(NAME)
 
 re:	fclean all
