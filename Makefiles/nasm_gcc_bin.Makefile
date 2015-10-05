@@ -1,5 +1,6 @@
 NAME= a.out
 BINDIR= bin
+BINPATH=$(BINDIR)/$(NAME)
 ASM= nasm
 CC= gcc
 
@@ -14,7 +15,9 @@ OBJ_ASM= $(SRC_ASM:%.S=obj/%.o)
 LD_FLAGS= 
 CC_FLAGS= -Wall -Wextra
 
-all:	$(BINDIR)/$(NAME)
+all: $(BINPATH)
+
+$(NAME): $(BINPATH)
 
 $(OBJ_ASM):$(SRCDIR)/$(SRC_ASM)
 	@mkdir -p $(OBJDIR)
@@ -24,7 +27,7 @@ $(OBJ_C):$(SRCDIR)/$(SRC_C)
 	@mkdir -p $(OBJDIR)
 	$(CC) $(CC_FLAGS) $(LD_FLAGS) -c $< -o $@
 
-$(NAME):	$(OBJ_ASM) $(OBJ_C) 
+$(BINPATH):	$(OBJ_ASM) $(OBJ_C) 
 	@mkdir -p $(BINDIR)
 	$(CC) $(OBJ_C) $(OBJ_ASM) -o $(BINDIR)/$(NAME) $(CC_FLAGS) $(LD_FLAGS)
 
