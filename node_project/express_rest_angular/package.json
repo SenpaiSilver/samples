@@ -1,0 +1,46 @@
+{
+  "name": "samplechan",
+  "version": "0.0.1",
+  "description": "",
+  "repository": "",
+  "main": "server.js",
+  "dependencies": {
+    "angular": "^1.5.0",
+    "angular-cookies": "^1.5.0",
+    "angular-resource": "^1.5.0",
+    "angular-route": "^1.5.0",
+    "angular-sanitize": "^1.5.0",
+    "body-parser": "^1.15.0",
+    "bootstrap": "^3.3.6",
+    "jquery": "2.*.*",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.4",
+    "jade": "^1.11.0",
+    "jsonfile": "^2.2.3",
+    "mocha": "^2.4.5",
+    "morgan": "^1.7.0",
+    "mysql2": "^0.15.8",
+    "passport": "^0.3.2",
+    "passport-google": "^0.3.0",
+    "passport-google-oauth": "^1.0.0",
+    "passport-google-oauth2": "^0.1.6",
+    "passport-google-plus": "^0.5.1",
+    "passport-twitter": "^1.0.4",
+    "serve-favicon": "^2.3.0",
+    "supertest": "^1.2.0"
+  },
+  "scripts": {
+    "prestart": "npm install",
+    "test": "mocha -R spec spec.js"
+  },
+  "author": [
+    {
+      "name": "SenpaiSilver",
+      "email": ""
+    }
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^1.10.2"
+  }
+}
